@@ -16,7 +16,7 @@ namespace GOL_EM_14
         bool[,] universe = new bool[5, 5];
         bool[,] scratchPad = new bool[5, 5];
 
-        
+
 
         // Drawing colors
         Color gridColor = Color.Black;
