@@ -249,9 +249,16 @@ namespace GOL_EM_14
         }
 
 
-        private void Start_Click(object sender, EventArgs e)
+
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
             timer.Enabled = true;
+        }
+
+        private void Pause_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
         }
     }
 }
