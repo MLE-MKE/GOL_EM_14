@@ -236,7 +236,22 @@ namespace GOL_EM_14
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Iterate through the universe in the y, top to bottom
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                // Iterate through the universe in the x, left to right
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    universe[x, y] = false;
+                }
+                graphicsPanel1.Invalidate();
+            }
+        }
 
+
+        private void Start_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = true;
         }
     }
 }
