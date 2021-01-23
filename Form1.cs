@@ -95,7 +95,59 @@ namespace GOL_EM_14
             return count;
         }
 
+        private int CountNeighborsToroidal(int x, int y)
+        {
+            int count = 0;
+            int xLength = universe.GetLength(0);
+            int yLength = universe.GetLength(1);
 
+            for (int yOffset = -1; yOffset <= 1; yOffset++)
+            {
+                for (int xOffset = -1; xOffset <= 1; xOffset++)
+                {
+                    int xCheck = x + xOffset;
+                    int yCheck = y + yOffset;
+
+                    // if xOffset and yOffset are both equal to 0 then continue
+                    if (xOffset == 0 & yOffset == 0)
+                    {
+                        continue;
+                    }
+
+                    // if xCheck is less than 0 then set to xLen - 1
+                    if (xCheck < 0)
+                    {
+                        x = universe.GetLength(0)-1;
+                    }
+
+                    // if yCheck is less than 0 then set to yLen - 1
+                    if (yCheck < 0)
+                    {
+                        y = universe.GetLength(1) - 1;
+                    }
+
+                    // if xCheck is greater than or equal too xLen then set to 0
+                    if (xCheck >= xLength)
+                    {
+                        x = 0;
+                    }
+
+                    // if yCheck is greater than or equal too yLen then set to 0
+                    if (yCheck >= yLength)
+                    {
+                        y = 0;
+                    }
+
+                    if (universe[xCheck, yCheck] == true)
+                        count++;
+                   
+
+                  
+                }
+            }
+
+            return count;
+        }
         private void NextGeneration()
         {
             
