@@ -233,5 +233,10 @@ namespace GOL_EM_14
                 graphicsPanel1.Invalidate();
             }
         }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
