@@ -60,10 +60,11 @@ namespace GOL_EM_14
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.Start = new System.Windows.Forms.ToolStripButton();
+            this.Pause = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelGenerations = new System.Windows.Forms.ToolStripStatusLabel();
             this.graphicsPanel1 = new GOL_EM_14.GraphicsPanel();
-            this.Pause = new System.Windows.Forms.ToolStripButton();
+            this.Next = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -226,7 +227,8 @@ namespace GOL_EM_14
             this.pasteToolStripButton,
             this.toolStripSeparator7,
             this.Start,
-            this.Pause});
+            this.Pause,
+            this.Next});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(573, 25);
@@ -307,6 +309,16 @@ namespace GOL_EM_14
             this.Start.Text = "toolStripButton1";
             this.Start.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // Pause
+            // 
+            this.Pause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Pause.Image = ((System.Drawing.Image)(resources.GetObject("Pause.Image")));
+            this.Pause.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Pause.Name = "Pause";
+            this.Pause.Size = new System.Drawing.Size(23, 22);
+            this.Pause.Text = "toolStripButton1";
+            this.Pause.Click += new System.EventHandler(this.Pause_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -334,15 +346,15 @@ namespace GOL_EM_14
             this.graphicsPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.graphicsPanel1_Paint);
             this.graphicsPanel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.graphicsPanel1_MouseClick);
             // 
-            // Pause
+            // Next
             // 
-            this.Pause.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Pause.Image = ((System.Drawing.Image)(resources.GetObject("Pause.Image")));
-            this.Pause.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Pause.Name = "Pause";
-            this.Pause.Size = new System.Drawing.Size(23, 22);
-            this.Pause.Text = "toolStripButton1";
-            this.Pause.Click += new System.EventHandler(this.Pause_Click);
+            this.Next.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Next.Image = ((System.Drawing.Image)(resources.GetObject("Next.Image")));
+            this.Next.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Next.Name = "Next";
+            this.Next.Size = new System.Drawing.Size(23, 22);
+            this.Next.Text = "toolStripButton1";
+            this.Next.Click += new System.EventHandler(this.Next_Click);
             // 
             // Form1
             // 
@@ -407,6 +419,7 @@ namespace GOL_EM_14
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelGenerations;
         private System.Windows.Forms.ToolStripButton Start;
         private System.Windows.Forms.ToolStripButton Pause;
+        private System.Windows.Forms.ToolStripButton Next;
     }
 }
 

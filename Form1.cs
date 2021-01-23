@@ -260,5 +260,10 @@ namespace GOL_EM_14
         {
             timer.Enabled = false;
         }
+
+        private void Next_Click(object sender, EventArgs e)
+        {
+            NextGeneration();
+        }
     }
 }
