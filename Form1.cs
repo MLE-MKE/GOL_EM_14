@@ -150,8 +150,44 @@ namespace GOL_EM_14
         }
         private void NextGeneration()
         {
-            
 
+            for (int x = 0; x < universe.GetLength(1); x++)
+            {
+                for (int y = 0; y < universe.GetLength(0); y++)
+                {
+                    int neighborCount = CountNeighborsToroidal(x, y);
+
+                    if (universe[x, y])
+                    {
+                        universe = scratchPad;
+
+                        //dead cells
+                        if (neighborCount > 2)
+                        {
+                            scratchPad[x, y] = false;
+                        }
+
+                        if (neighborCount < 3)
+                        {
+                            scratchPad[x, y] = false;
+                        }
+
+                        //living cells
+
+                        if (neighborCount == 3 )
+                        {
+                            scratchPad[x, y] = true;
+                        }
+
+                        if (neighborCount == 2)
+                        {
+                            scratchPad[x, y] = true;
+                        }
+
+                        universe[x, y] = !universe[x, y];
+                    }
+                }
+            }
 
 
             // Increment generation count
