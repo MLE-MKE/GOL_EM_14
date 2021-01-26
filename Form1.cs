@@ -61,14 +61,14 @@ namespace GOL_EM_14
 
 
                     // if xCheck is less than 0 then continue
-                    if (xCheck < 0)
+                    if (xOffset < 0)
                     {
                         continue;
 
                     }
 
                     // if yCheck is less than 0 then continue
-                    if (yCheck < 0)
+                    if (yOffset < 0)
                     {
                         continue;
 
@@ -87,8 +87,9 @@ namespace GOL_EM_14
                     }
 
                     if (universe[xCheck, yCheck] == true)
+                    {
                         count++;
-                   
+                    }
                 }
 
             }
@@ -166,12 +167,12 @@ namespace GOL_EM_14
                         
 
                         //dead cells
-                        if (neighborCount < 2)
+                        if (neighborCount > 2)
                         {
                             scratchPad[x, y] = false;
                         }
 
-                        if (neighborCount > 3)
+                        if (neighborCount < 3)
                         {
                             scratchPad[x, y] = false;
                         }
@@ -206,6 +207,7 @@ namespace GOL_EM_14
         private void Timer_Tick(object sender, EventArgs e)
         {
             NextGeneration();
+            graphicsPanel1.Invalidate();
         }
 
         private void graphicsPanel1_Paint(object sender, PaintEventArgs e)
@@ -300,6 +302,7 @@ namespace GOL_EM_14
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             timer.Enabled = true;
+            graphicsPanel1.Invalidate();
         }
 
         private void Pause_Click(object sender, EventArgs e)
@@ -310,6 +313,7 @@ namespace GOL_EM_14
         private void Next_Click(object sender, EventArgs e)
         {
             NextGeneration();
+            graphicsPanel1.Invalidate();
         }
 
         private void colorDBToolStripMenuItem_Click(object sender, EventArgs e)
