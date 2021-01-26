@@ -100,6 +100,7 @@ namespace GOL_EM_14
             int count = 0;
             int xLength = universe.GetLength(0);
             int yLength = universe.GetLength(1);
+            
 
             for (int yOffset = -1; yOffset <= 1; yOffset++)
             {
@@ -117,29 +118,29 @@ namespace GOL_EM_14
                     // if xCheck is less than 0 then set to xLen - 1
                     if (xCheck < 0)
                     {
-                        x = universe.GetLength(0)-1;
+                        xCheck = universe.GetLength(0)-1;
                     }
 
                     // if yCheck is less than 0 then set to yLen - 1
                     if (yCheck < 0)
                     {
-                        y = universe.GetLength(1) - 1;
+                        yCheck = universe.GetLength(1) - 1;
                     }
 
                     // if xCheck is greater than or equal too xLen then set to 0
                     if (xCheck >= xLength)
                     {
-                        x = 0;
+                        xCheck = 0;
                     }
 
                     // if yCheck is greater than or equal too yLen then set to 0
                     if (yCheck >= yLength)
                     {
-                        y = 0;
+                        yCheck = 0;
                     }
 
                     if (universe[xCheck, yCheck] == true)
-                        count++;
+                     count++; 
                    
 
                   
