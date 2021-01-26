@@ -320,12 +320,18 @@ namespace GOL_EM_14
             {
                 graphicsPanel1.BackColor = dlg.Color;
             }
-           
+            graphicsPanel1.Invalidate();
+
         }
 
         private void modalDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ModalDialog dlg = new ModalDialog();
 
+            //if (DialogResult.OK == dlg.GetType))
+            //{
+
+            //}
         }
 
         private void backgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -340,6 +346,7 @@ namespace GOL_EM_14
             {
                 graphicsPanel1.BackColor = dlg.Color;
             }
+            graphicsPanel1.Invalidate();
         }
 
         private void cellColorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -354,6 +361,7 @@ namespace GOL_EM_14
             {
                 cellColor = dlg.Color;
             }
+            graphicsPanel1.Invalidate();
         }
     }
 }
