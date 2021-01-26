@@ -375,7 +375,7 @@ namespace GOL_EM_14
                 {
                     string strfilename = ofd.FileName;
                     string filetext = File.ReadAllText(strfilename);
-                    
+                    //richTextBox1.Text = filetext;
                 }
                 MessageBox.Show(ofd.FileName);
             }
@@ -384,7 +384,15 @@ namespace GOL_EM_14
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (Stream stream = File.Open(sfd.FileName, FileMode.CreateNew))
+                    using(StreamWriter streamWriter = new StreamWriter(stream))
+                {
+                    streamWriter.Write(RichTextBox.Text);
+                }
+            }
 
 
         }
