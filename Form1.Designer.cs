@@ -30,6 +30,7 @@ namespace GOL_EM_14
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,13 +62,17 @@ namespace GOL_EM_14
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.Start = new System.Windows.Forms.ToolStripButton();
             this.Pause = new System.Windows.Forms.ToolStripButton();
+            this.Next = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelGenerations = new System.Windows.Forms.ToolStripStatusLabel();
             this.graphicsPanel1 = new GOL_EM_14.GraphicsPanel();
-            this.Next = new System.Windows.Forms.ToolStripButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.colorDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modalDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -319,6 +324,16 @@ namespace GOL_EM_14
             this.Pause.Text = "toolStripButton1";
             this.Pause.Click += new System.EventHandler(this.Pause_Click);
             // 
+            // Next
+            // 
+            this.Next.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Next.Image = ((System.Drawing.Image)(resources.GetObject("Next.Image")));
+            this.Next.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Next.Name = "Next";
+            this.Next.Size = new System.Drawing.Size(23, 22);
+            this.Next.Text = "toolStripButton1";
+            this.Next.Click += new System.EventHandler(this.Next_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -338,6 +353,7 @@ namespace GOL_EM_14
             // graphicsPanel1
             // 
             this.graphicsPanel1.BackColor = System.Drawing.SystemColors.Window;
+            this.graphicsPanel1.ContextMenuStrip = this.contextMenuStrip1;
             this.graphicsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.graphicsPanel1.Location = new System.Drawing.Point(0, 49);
             this.graphicsPanel1.Name = "graphicsPanel1";
@@ -346,15 +362,27 @@ namespace GOL_EM_14
             this.graphicsPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.graphicsPanel1_Paint);
             this.graphicsPanel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.graphicsPanel1_MouseClick);
             // 
-            // Next
+            // contextMenuStrip1
             // 
-            this.Next.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Next.Image = ((System.Drawing.Image)(resources.GetObject("Next.Image")));
-            this.Next.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Next.Name = "Next";
-            this.Next.Size = new System.Drawing.Size(23, 22);
-            this.Next.Text = "toolStripButton1";
-            this.Next.Click += new System.EventHandler(this.Next_Click);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.colorDBToolStripMenuItem,
+            this.modalDBToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // colorDBToolStripMenuItem
+            // 
+            this.colorDBToolStripMenuItem.Name = "colorDBToolStripMenuItem";
+            this.colorDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colorDBToolStripMenuItem.Text = "Color DB";
+            this.colorDBToolStripMenuItem.Click += new System.EventHandler(this.colorDBToolStripMenuItem_Click);
+            // 
+            // modalDBToolStripMenuItem
+            // 
+            this.modalDBToolStripMenuItem.Name = "modalDBToolStripMenuItem";
+            this.modalDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modalDBToolStripMenuItem.Text = "Modal DB";
+            this.modalDBToolStripMenuItem.Click += new System.EventHandler(this.modalDBToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -374,6 +402,7 @@ namespace GOL_EM_14
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,6 +449,9 @@ namespace GOL_EM_14
         private System.Windows.Forms.ToolStripButton Start;
         private System.Windows.Forms.ToolStripButton Pause;
         private System.Windows.Forms.ToolStripButton Next;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem colorDBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modalDBToolStripMenuItem;
     }
 }
 
