@@ -44,6 +44,8 @@ namespace GOL_EM_14
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cellColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -169,14 +171,31 @@ namespace GOL_EM_14
             // 
             // customizeToolStripMenuItem
             // 
+            this.customizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backgroundColorToolStripMenuItem,
+            this.cellColorToolStripMenuItem});
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customizeToolStripMenuItem.Text = "&Customize";
+            // 
+            // backgroundColorToolStripMenuItem
+            // 
+            this.backgroundColorToolStripMenuItem.Name = "backgroundColorToolStripMenuItem";
+            this.backgroundColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backgroundColorToolStripMenuItem.Text = "Background Color";
+            this.backgroundColorToolStripMenuItem.Click += new System.EventHandler(this.backgroundColorToolStripMenuItem_Click);
+            // 
+            // cellColorToolStripMenuItem
+            // 
+            this.cellColorToolStripMenuItem.Name = "cellColorToolStripMenuItem";
+            this.cellColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cellColorToolStripMenuItem.Text = "Cell Color";
+            this.cellColorToolStripMenuItem.Click += new System.EventHandler(this.cellColorToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
             // helpToolStripMenuItem
@@ -368,19 +387,19 @@ namespace GOL_EM_14
             this.colorDBToolStripMenuItem,
             this.modalDBToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 48);
             // 
             // colorDBToolStripMenuItem
             // 
             this.colorDBToolStripMenuItem.Name = "colorDBToolStripMenuItem";
-            this.colorDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colorDBToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.colorDBToolStripMenuItem.Text = "Color DB";
             this.colorDBToolStripMenuItem.Click += new System.EventHandler(this.colorDBToolStripMenuItem_Click);
             // 
             // modalDBToolStripMenuItem
             // 
             this.modalDBToolStripMenuItem.Name = "modalDBToolStripMenuItem";
-            this.modalDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modalDBToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.modalDBToolStripMenuItem.Text = "Modal DB";
             this.modalDBToolStripMenuItem.Click += new System.EventHandler(this.modalDBToolStripMenuItem_Click);
             // 
@@ -452,6 +471,8 @@ namespace GOL_EM_14
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem colorDBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modalDBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backgroundColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cellColorToolStripMenuItem;
     }
 }
 
