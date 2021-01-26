@@ -54,7 +54,7 @@ namespace GOL_EM_14
                     int yCheck = y + yOffset;
 
                     // if xOffset and yOffset are both equal to 0 then continue
-                    if (xOffset == 0 & yOffset == 0)
+                    if (xOffset == 0 && yOffset == 0)
                     {
                         continue;
                     }
@@ -94,6 +94,8 @@ namespace GOL_EM_14
             }
 
             return count;
+
+            
         }
 
         private int CountNeighborsToroidal(int x, int y)
@@ -153,42 +155,41 @@ namespace GOL_EM_14
         private void NextGeneration()
         {
 
-            for (int x = 0; x < universe.GetLength(1); x++)
+            for (int y = 0; y < universe.GetLength(1); y++)
             {
-                for (int y = 0; y < universe.GetLength(0); y++)
+                for (int x = 0; x < universe.GetLength(0); x++)
                 {
-                    int neighborCount = CountNeighborsToroidal(x, y);
+                    int neighborCount = CountNeighborsFinite(x, y);
 
                     if (universe[x, y])
                     {
-                        universe = scratchPad;
+                        
 
                         //dead cells
-                        if (neighborCount > 2)
+                        if (neighborCount < 2)
                         {
                             scratchPad[x, y] = false;
                         }
 
-                        if (neighborCount < 3)
+                        if (neighborCount > 3)
                         {
                             scratchPad[x, y] = false;
                         }
 
                         //living cells
 
-                        if (neighborCount == 3 )
+                        if (neighborCount == 3 || neighborCount == 2)
                         {
                             scratchPad[x, y] = true;
                         }
 
-                        if (neighborCount == 2)
-                        {
-                            scratchPad[x, y] = true;
-                        }
+                       
 
                         universe[x, y] = !universe[x, y];
                     }
                 }
+
+                universe = scratchPad;
             }
 
 
@@ -197,6 +198,8 @@ namespace GOL_EM_14
 
             // Update status strip generations
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
+
+            graphicsPanel1.Invalidate();
         }
 
         // The event called by the timer every Interval milliseconds.
