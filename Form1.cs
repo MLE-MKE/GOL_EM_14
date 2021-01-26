@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GOL_EM_14
@@ -362,6 +363,30 @@ namespace GOL_EM_14
                 cellColor = dlg.Color;
             }
             graphicsPanel1.Invalidate();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream myStream;
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if ((myStream = ofd.OpenFile()) !=null)
+                {
+                    string strfilename = ofd.FileName;
+                    string filetext = File.ReadAllText(strfilename);
+                    
+                }
+                MessageBox.Show(ofd.FileName);
+            }
+            ofd.ShowDialog();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+
+
         }
     }
 }
