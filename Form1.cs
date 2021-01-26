@@ -375,7 +375,7 @@ namespace GOL_EM_14
                 {
                     string strfilename = ofd.FileName;
                     string filetext = File.ReadAllText(strfilename);
-                    //richTextBox1.Text = filetext;
+                    richTextBox1.Text = filetext;
                 }
                 MessageBox.Show(ofd.FileName);
             }
@@ -390,7 +390,7 @@ namespace GOL_EM_14
                 using (Stream stream = File.Open(sfd.FileName, FileMode.CreateNew))
                     using(StreamWriter streamWriter = new StreamWriter(stream))
                 {
-                    streamWriter.Write(RichTextBox.Text);
+                    streamWriter.Write(richTextBox1.Text);
                 }
             }
 
