@@ -32,6 +32,7 @@ namespace GOL_EM_14
         private int livingcells = 0;
         private Label CellCount;
         private Label BoundarySize;
+        private Label BoundaryType;
 
         //variable settings
         
@@ -559,12 +560,6 @@ namespace GOL_EM_14
 
             
         }
-
-        private void torodialToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
-        }
-
         private void backgroundModalColor_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -593,6 +588,64 @@ namespace GOL_EM_14
                 cellColor = dlg.Color;
             }
             graphicsPanel1.Invalidate();
+        }
+
+        private void GridColorModal_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.Color = this.gridColor;
+            if (DialogResult.OK != colorDialog.ShowDialog())
+                return;
+            this.gridColor = colorDialog.Color;
+            this.graphicsPanel1.Invalidate();
+
+        }
+
+        private void torodialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
+            if (this.finiteToolStripMenuItem.Checked)
+            {
+                this.BoundaryType.Text = "BoundaryType = Finite";
+                this.finiteToolStripMenuItem.Enabled = true;
+                this.torodialToolStripMenuItem.Enabled = false;
+            }
+
+            if (this.checkedState)
+            {
+                this.checkedState = false;
+                this.torodialToolStripMenuItem.Checked = true;
+                this.finiteToolStripMenuItem.Checked = false;
+               
+            }
+            this.graphicsPanel1.Invalidate();
+            
+        }
+
+        private void finiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //torodial modal
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
+            if (this.finiteToolStripMenuItem.Checked)
+            {
+                this.BoundaryType.Text = "BoundaryType = Finite";
+                this.finiteToolStripMenuItem.Enabled = true;
+                this.torodialToolStripMenuItem.Enabled = false;
+            }
+
+            if (this.checkedState)
+            {
+                this.checkedState = false;
+                this.torodialToolStripMenuItem.Checked = true;
+                this.finiteToolStripMenuItem.Checked = false;
+
+            }
+            this.graphicsPanel1.Invalidate();
         }
     }
     

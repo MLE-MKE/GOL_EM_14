@@ -77,7 +77,7 @@ namespace GOL_EM_14
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundModalColor = new System.Windows.Forms.ToolStripMenuItem();
             this.cellColorModal = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.GridColorModal = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsPanel1 = new GOL_EM_14.GraphicsPanel();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -296,8 +296,9 @@ namespace GOL_EM_14
             // finiteToolStripMenuItem
             // 
             this.finiteToolStripMenuItem.Name = "finiteToolStripMenuItem";
-            this.finiteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.finiteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.finiteToolStripMenuItem.Text = "Finite";
+            this.finiteToolStripMenuItem.Click += new System.EventHandler(this.finiteToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -435,35 +436,37 @@ namespace GOL_EM_14
             this.toolStripMenuItem1,
             this.backgroundModalColor,
             this.cellColorModal,
-            this.toolStripMenuItem4});
+            this.GridColorModal});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(171, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Torodial";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // backgroundModalColor
             // 
             this.backgroundModalColor.Name = "backgroundModalColor";
-            this.backgroundModalColor.Size = new System.Drawing.Size(170, 22);
+            this.backgroundModalColor.Size = new System.Drawing.Size(180, 22);
             this.backgroundModalColor.Text = "Background Color";
             this.backgroundModalColor.Click += new System.EventHandler(this.backgroundModalColor_Click);
             // 
             // cellColorModal
             // 
             this.cellColorModal.Name = "cellColorModal";
-            this.cellColorModal.Size = new System.Drawing.Size(170, 22);
+            this.cellColorModal.Size = new System.Drawing.Size(180, 22);
             this.cellColorModal.Text = "Cell Color";
             this.cellColorModal.Click += new System.EventHandler(this.cellColorModal_Click);
             // 
-            // toolStripMenuItem4
+            // GridColorModal
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(170, 22);
-            this.toolStripMenuItem4.Text = "Grid Color";
+            this.GridColorModal.Name = "GridColorModal";
+            this.GridColorModal.Size = new System.Drawing.Size(180, 22);
+            this.GridColorModal.Text = "Grid Color";
+            this.GridColorModal.Click += new System.EventHandler(this.GridColorModal_Click);
             // 
             // graphicsPanel1
             // 
@@ -553,7 +556,7 @@ namespace GOL_EM_14
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem backgroundModalColor;
         private System.Windows.Forms.ToolStripMenuItem cellColorModal;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem GridColorModal;
     }
 }
 
