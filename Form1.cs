@@ -14,8 +14,8 @@ namespace GOL_EM_14
     public partial class Form1 : Form
     {
         // The universe array
-        bool[,] universe = new bool[100, 100];
-        bool[,] scratchPad = new bool[100, 100];
+        bool[,] universe = new bool[10, 10];
+        //bool[,] scratchPad = new bool[10, 10];
 
 
         //Declaring variables for Next Generation
@@ -33,6 +33,10 @@ namespace GOL_EM_14
         private Label CellCount;
         private Label BoundarySize;
         private Label BoundaryType;
+        private Label UniverseSize;
+
+        private ToolStripStatusLabel CellsAlive;
+        private Label label1;
 
         //variable settings
         
@@ -227,7 +231,7 @@ namespace GOL_EM_14
                         ++this.livingcells;
                 }
 
-                universe = scratchPad;
+                ////universe = scratchPad;
             }
 
 
@@ -249,19 +253,24 @@ namespace GOL_EM_14
 
         private void graphicsPanel1_Paint(object sender, PaintEventArgs e)
         {
-            
             // Calculate the width and height of each cell in pixels
             // CELL WIDTH = WINDOW WIDTH / NUMBER OF CELLS IN X
+            //convert to float
+
+            float num1 = (float)this.graphicsPanel1.ClientSize.Width / (float)this.universe.GetLength(0);
+            float num2 = (float)this.graphicsPanel1.ClientSize.Height / (float)this.universe.GetLength(1);
             int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
             float cellWidthF;
             cellWidthF = (float)cellWidth;
-            
+
             // CELL HEIGHT = WINDOW HEIGHT / NUMBER OF CELLS IN Y
             int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
             float cellHeightF;
-            cellHeightF = (float) cellHeight;
+            cellHeightF = (float)cellHeight;
 
             // A Pen for drawing the grid lines (color, width)
+            Pen pen1 = new Pen(this.gridColor, 1f);
+            Pen pen2 = new Pen(this.gridColor, 2f);
             Pen gridPen = new Pen(gridColor, 1);
 
             // A Brush for filling living cells interiors (color)
@@ -274,11 +283,14 @@ namespace GOL_EM_14
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
                     // A rectangle to represent each cell in pixels
-                    Rectangle cellRect = Rectangle.Empty;
+                    RectangleF cellRect = (RectangleF)Rectangle.Empty;
+                    cellRect.X = (float)x * num1;
+                    cellRect.Y = (float)y * num2;
                     cellRect.X = x * cellWidth;
                     cellRect.Y = y * cellHeight;
                     cellRect.Width = cellWidth;
                     cellRect.Height = cellHeight;
+
 
                     // Fill the cell with a brush if alive
                     if (universe[x, y] == true)
@@ -294,10 +306,112 @@ namespace GOL_EM_14
             // Cleaning up pens and brushes
             gridPen.Dispose();
             cellBrush.Dispose();
+
+            #region Original Code
+            //// Calculate the width and height of each cell in pixels
+            //// CELL WIDTH = WINDOW WIDTH / NUMBER OF CELLS IN X
+            ////convert to float
+
+            //float num1 = (float)this.graphicsPanel1.ClientSize.Width / (float)this.universe.GetLength(0);
+            //float num2 = (float)this.graphicsPanel1.ClientSize.Height / (float)this.universe.GetLength(1);
+            //int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
+            //float cellWidthF;
+            //cellWidthF = (float)cellWidth;
+
+            //// CELL HEIGHT = WINDOW HEIGHT / NUMBER OF CELLS IN Y
+            //int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
+            //float cellHeightF;
+            //cellHeightF = (float) cellHeight;
+
+            //// A Pen for drawing the grid lines (color, width)
+            //Pen pen1 = new Pen(this.gridColor, 1f);
+            //Pen pen2 = new Pen(this.gridColor, 2f);
+            //Pen gridPen = new Pen(gridColor, 1);
+
+            //// A Brush for filling living cells interiors (color)
+            //Brush cellBrush = new SolidBrush(cellColor);
+
+            //// Iterate through the universe in the y, top to bottom
+            //for (int y = 0; y < universe.GetLength(1); y++)
+            //{
+            //    // Iterate through the universe in the x, left to right
+            //    for (int x = 0; x < universe.GetLength(0); x++)
+            //    {
+            //        // A rectangle to represent each cell in pixels
+            //        RectangleF cellRect = (RectangleF) Rectangle.Empty;
+            //        cellRect.X = (float) x * num1;
+            //        cellRect.Y = (float) y * num2;
+            //        cellRect.X = x * cellWidth;
+            //        cellRect.Y = y * cellHeight;
+            //        cellRect.Width = cellWidth;
+            //        cellRect.Height = cellHeight;
+
+
+            //        // Fill the cell with a brush if alive
+            //        if (universe[x, y] == true)
+            //        {
+            //            e.Graphics.FillRectangle(cellBrush, cellRect);
+            //        }
+
+            //        // Outline the cell with a pen
+            //        e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+            //    }
+            //}
+
+            //// Cleaning up pens and brushes
+            //gridPen.Dispose();
+            //cellBrush.Dispose();
+            #endregion 
         }
 
         private void graphicsPanel1_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button != MouseButtons.Left)
+                return;
+            Size clientSize = this.graphicsPanel1.ClientSize;
+            float num1 = (float)clientSize.Width / (float)this.universe.GetLength(0);
+            clientSize = this.graphicsPanel1.ClientSize;
+            float num2 = (float)clientSize.Height / (float)this.universe.GetLength(1);
+            float num3 = (float)e.X / num1;
+            float num4 = (float)e.Y / num2;
+            this.universe[(int)num3, (int)num4] = !this.universe[(int)num3, (int)num4];
+            this.graphicsPanel1.Invalidate();
+            if (this.universe[(int)num3, (int)num4])
+                ++this.livingcells;
+            else
+                --this.livingcells;
+            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
+            this.CellsAlive.Text = "Living Cells = " + this.livingcells.ToString();
+        }
+
+        private void cutToolStripButton_Click(object sender, EventArgs e) => this.timer.Stop();
+
+        private void copyToolStripButton_Click(object sender, EventArgs e) => this.timer.Start();
+
+        private void pasteToolStripButton_Click(object sender, EventArgs e) => this.NextGeneration();
+
+        private void newToolStripButton_Click(object sender, EventArgs e)
+        {
+            for (int index1 = 0; index1 < this.universe.GetLength(1); ++index1)
+            {
+                for (int index2 = 0; index2 < this.universe.GetLength(0); ++index2)
+                    this.universe[index2, index1] = false;
+            }
+            this.generations = 0;
+            this.livingcells = 0;
+            this.toolStripStatusLabelGenerations.Text = "Generations = " + this.generations.ToString();
+            this.CellsAlive.Text = "Living Cells = " + this.livingcells.ToString();
+            this.graphicsPanel1.Invalidate();
+            this.timer.Stop();
+            this.gridColor = Color.Black;
+            this.label1.Text = "Generations = " + this.generations.ToString();
+            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
+            this.UniverseSize.Text = "UniverseSize: (Width = , Height = ) ";
+            Settings.Default.PanelColor = this.graphicsPanel1.BackColor;
+            Settings.Default.CellColor = this.cellColor;
+            Settings.Default.Save();
+            #region Original Code
+
             // If the left mouse button was clicked
             if (e.Button == MouseButtons.Left)
             {
@@ -317,6 +431,7 @@ namespace GOL_EM_14
                 // Tell Windows you need to repaint
                 graphicsPanel1.Invalidate();
             }
+            #endregion
         }
 
 
