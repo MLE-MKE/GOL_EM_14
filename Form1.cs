@@ -624,7 +624,19 @@ namespace GOL_EM_14
 
         private void finiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (this.torodialToolStripMenuItem.Checked)
+            {
+                this.BoundaryType.Text = "BoundaryType = Torodial";
+                this.torodialToolStripMenuItem.Enabled = true;
+                this.finiteToolStripMenuItem.Enabled = false;
+            }
+            if (!this.checkedState)
+            {
+                this.checkedState = true;
+                this.torodialToolStripMenuItem.Checked = false;
+                this.finiteToolStripMenuItem.Checked = true;
+            }
+            this.graphicsPanel1.Invalidate();
         }
 
         //torodial modal
@@ -644,6 +656,23 @@ namespace GOL_EM_14
                 this.torodialToolStripMenuItem.Checked = true;
                 this.finiteToolStripMenuItem.Checked = false;
 
+            }
+            this.graphicsPanel1.Invalidate();
+        }
+
+        private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.torodialToolStripMenuItem.Checked)
+            {
+                this.BoundaryType.Text = "BoundaryType = Torodial";
+                this.torodialToolStripMenuItem.Enabled = true;
+                this.finiteToolStripMenuItem.Enabled = false;
+            }
+            if (!this.checkedState)
+            {
+                this.checkedState = true;
+                this.torodialToolStripMenuItem.Checked = false;
+                this.finiteToolStripMenuItem.Checked = true;
             }
             this.graphicsPanel1.Invalidate();
         }

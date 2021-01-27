@@ -79,6 +79,7 @@ namespace GOL_EM_14
             this.cellColorModal = new System.Windows.Forms.ToolStripMenuItem();
             this.GridColorModal = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsPanel1 = new GOL_EM_14.GraphicsPanel();
+            this.finiteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -434,11 +435,12 @@ namespace GOL_EM_14
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.finiteToolStripMenuItem1,
             this.backgroundModalColor,
             this.cellColorModal,
             this.GridColorModal});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 136);
             // 
             // toolStripMenuItem1
             // 
@@ -479,6 +481,13 @@ namespace GOL_EM_14
             this.graphicsPanel1.TabIndex = 3;
             this.graphicsPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.graphicsPanel1_Paint);
             this.graphicsPanel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.graphicsPanel1_MouseClick);
+            // 
+            // finiteToolStripMenuItem1
+            // 
+            this.finiteToolStripMenuItem1.Name = "finiteToolStripMenuItem1";
+            this.finiteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.finiteToolStripMenuItem1.Text = "Finite";
+            this.finiteToolStripMenuItem1.Click += new System.EventHandler(this.finiteToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -557,6 +566,7 @@ namespace GOL_EM_14
         private System.Windows.Forms.ToolStripMenuItem backgroundModalColor;
         private System.Windows.Forms.ToolStripMenuItem cellColorModal;
         private System.Windows.Forms.ToolStripMenuItem GridColorModal;
+        private System.Windows.Forms.ToolStripMenuItem finiteToolStripMenuItem1;
     }
 }
 
