@@ -434,6 +434,7 @@ namespace GOL_EM_14
             }
             //DO I need the close? or will the invalidate?? 
             streamReader.Close();
+            #region openFileDialog Test
             //if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             //{
             //    if ((myStream = ofd.OpenFile()) !=null)
@@ -444,8 +445,38 @@ namespace GOL_EM_14
             //    }
             //    MessageBox.Show(ofd.FileName);
             //}
+            #endregion
             ofd.ShowDialog();
         }
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "All Files|*.*|Cells|*.cells";
+            sfd.FilterIndex = 2;
+            sfd.DefaultExt = "cells";
+            sfd.RestoreDirectory = true;
+            if (DialogResult.OK != sfd.ShowDialog())
+                return;
+            using(StreamWriter streamWriter = new StreamWriter(sfd.FileName))
+            {
+                for (int index = 0; index < this.universe.GetLength(1); index++)
+                {
+                    string empty = string.Empty;
+                    for (int index2 = 0; index2 < this.universe.GetLength(0); index2++)
+                    {
+                        if (this.universe[index2, index])
+                            streamWriter.Write("0");
+                        else if (!this.universe[index2, index])
+                            streamWriter.Write(".");
+
+                    }
+                    streamWriter.WriteLine(empty);
+                }
+            }
+
+            
+        }
+
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
