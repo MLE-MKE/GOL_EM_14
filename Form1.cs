@@ -18,6 +18,14 @@ namespace GOL_EM_14
         bool[,] scratchPad = new bool[5, 5];
 
 
+        //Declaring variables for Next Generation
+        private int aliveCells = 0;
+        private int checkAlive;
+
+        //bool to check cells current state
+        //default to false? 
+        private bool checkedState = false;
+
 
         // Drawing colors
         Color gridColor = Color.Black;
@@ -155,36 +163,39 @@ namespace GOL_EM_14
         }
         private void NextGeneration()
         {
+            bool[,] checkArray1 = new bool[this.universe.GetLength(0), this.universe.GetLength(1)];
+            this.aliveCells = 0;
 
             for (int y = 0; y < universe.GetLength(1); y++)
             {
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
-                    int neighborCount = CountNeighborsFinite(x, y);
+                    //this.checkAlive = !this.checkedstate ? this.CountNeighborsFinite(x, y) : this.GetTorodial(x, y);
+                    int neighborcount = CountNeighborsFinite(x, y);
 
                     if (universe[x, y])
                     {
-                        
+
 
                         //dead cells
-                        if (neighborCount > 2)
+                        if (neighborcount > 2)
                         {
                             scratchPad[x, y] = false;
                         }
 
-                        if (neighborCount < 3)
+                        if (neighborcount < 3)
                         {
                             scratchPad[x, y] = false;
                         }
 
                         //living cells
 
-                        if (neighborCount == 3 || neighborCount == 2)
+                        if (neighborcount == 3 || neighborcount == 2)
                         {
                             scratchPad[x, y] = true;
                         }
 
-                       
+
 
                         universe[x, y] = !universe[x, y];
                     }
@@ -374,18 +385,65 @@ namespace GOL_EM_14
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Stream myStream;
+            
             OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            ofd.Filter = "All Files| *.* |Cells*.cells";
+            ofd.FilterIndex = 2;
+
+            if (DialogResult.OK != ofd.ShowDialog())
+                return;
+            StreamReader streamReader = new StreamReader(ofd.FileName);
+            int len1 = 0;
+            int len2 = 0;
+            //use dictionary search snippet
+            while (!streamReader.EndOfStream)
             {
-                if ((myStream = ofd.OpenFile()) !=null)
+                string myStream = streamReader.ReadLine();
+                if (myStream[0] != '!')
                 {
-                    string strfilename = ofd.FileName;
-                    string filetext = File.ReadAllText(strfilename);
-                    toolStripTextBox1.Text = filetext;
+                    ++len2;
+                    if (myStream.Length > len1)
+                        len1 = myStream.Length;
+                    
                 }
-                MessageBox.Show(ofd.FileName);
+
             }
+
+            this.universe = new bool[len1, len2];
+            streamReader.BaseStream.Seek(0L, SeekOrigin.Begin);
+            int index = 0;
+            while(!streamReader.EndOfStream)
+            {
+                string str = streamReader.ReadLine();
+                if (str[0] != '!')
+                {
+                    ++len2;
+                    if (str.Length > len1)
+                        len1 = str.Length;    
+                }
+                for (int index2 = 0; index2 < str.Length; index2++)
+                {
+                    if (str[index2] == '0')
+                        this.universe[index2, index] = true;
+                    if (str[index2] == '.')
+                        this.universe[index2, index] = false;
+                    this.graphicsPanel1.Invalidate();
+                  
+                }
+                ++index;
+            }
+            //DO I need the close? or will the invalidate?? 
+            streamReader.Close();
+            //if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    if ((myStream = ofd.OpenFile()) !=null)
+            //    {
+            //        string strfilename = ofd.FileName;
+            //        string filetext = File.ReadAllText(strfilename);
+            //        toolStripTextBox1.Text = filetext;
+            //    }
+            //    MessageBox.Show(ofd.FileName);
+            //}
             ofd.ShowDialog();
         }
 
