@@ -39,8 +39,8 @@ namespace GOL_EM_14
         private Label label1;
 
         //variable settings
-        
 
+        private ToolStripMenuItem fromTimeToolStripMenuItem;
 
         // Drawing colors
         Color gridColor = Color.Black;
@@ -829,6 +829,25 @@ namespace GOL_EM_14
         private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void fromTimeSeedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Random random = new Random(DateTime.Now.Millisecond);
+            for (int index = 0; index < universe.GetLength(0); index++)
+            {
+                for (int index2 = 0; index2 < universe.GetLength(1); index2++)
+                {
+                    universe[index, index2] = false;
+                    if (random.Next(0,4) == 0)
+                    {
+                        universe[index, index2] = true;
+                        ++livingcells;
+                    }
+                }
+            }
+            generations = 0;
+            
         }
     }
     

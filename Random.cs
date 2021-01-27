@@ -16,9 +16,14 @@ namespace GOL_EM_14
         private Label Height;
         private Button OK;
         private Button Cancel;
+        private int millisecond;
 
         public Random() => this.InitializeComponent();
 
+        public Random(int millisecond)
+        {
+            this.millisecond = millisecond;
+        }
 
         private void InitializeComponent()
         {
