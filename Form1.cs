@@ -498,6 +498,8 @@ namespace GOL_EM_14
 
         }
        
+       //maybe put in class just to make it neater?
+
         private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Random random = new Random();
@@ -515,6 +517,16 @@ namespace GOL_EM_14
                         }
                     }
                 }
+            }
+        }
+
+        private void turnGridOnoffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.turnGridOnoffToolStripMenuItem.Checked)
+            {
+                this.turnGridOnoffToolStripMenuItem.Checked = true;
+                this.gridColor = Color.Transparent;
+                this.graphicsPanel1.Invalidate();
             }
         }
     }
