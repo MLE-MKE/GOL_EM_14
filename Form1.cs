@@ -30,6 +30,8 @@ namespace GOL_EM_14
         private bool checkedState = false;
         private int seed = 0;
         private int livingcells = 0;
+        private Label CellCount;
+        private Label BoundarySize;
 
         //variable settings
         
@@ -55,7 +57,9 @@ namespace GOL_EM_14
             timer.Enabled = false; // start timer running
 
              this.turnGridOnoffToolStripMenuItem = new ToolStripMenuItem();
-    }
+
+            this.boundariesToolStripMenuItem = new ToolStripMenuItem();
+        }
 
         // Calculate the next generation of cells
         private int CountNeighborsFinite(int x, int y)
@@ -554,6 +558,11 @@ namespace GOL_EM_14
             this.graphicsPanel1.Invalidate();
 
             
+        }
+
+        private void torodialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
         }
     }
 }
