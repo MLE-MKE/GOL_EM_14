@@ -387,7 +387,7 @@ namespace GOL_EM_14
         {
             
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "All Files| *.* |Cells*.cells";
+            ofd.Filter = "All Files|*.*|Cells|*.cells";
             ofd.FilterIndex = 2;
 
             if (DialogResult.OK != ofd.ShowDialog())
