@@ -22,6 +22,9 @@ namespace GOL_EM_14
         private int aliveCells = 0;
         private int checkAlive;
 
+        // Declaring other variable I think I have to declare?
+        private ToolStripMenuItem randomizeUniverseSeedToolStripMenuItem;
+
         //bool to check cells current state
         //default to false? 
         private bool checkedState = false;
@@ -491,6 +494,15 @@ namespace GOL_EM_14
             }
 
 
+        }
+
+        private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            if (DialogResult.OK == random.ShowDialog())
+            {
+
+            }
         }
     }
 }
