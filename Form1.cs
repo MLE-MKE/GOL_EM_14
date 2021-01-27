@@ -522,10 +522,19 @@ namespace GOL_EM_14
 
         private void turnGridOnoffToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //on
             if (this.turnGridOnoffToolStripMenuItem.Checked)
             {
                 this.turnGridOnoffToolStripMenuItem.Checked = true;
                 this.gridColor = Color.Transparent;
+                this.graphicsPanel1.Invalidate();
+            }
+
+            //off
+            if (this.turnGridOnoffToolStripMenuItem.Checked)
+            {
+                this.turnGridOnoffToolStripMenuItem.Checked = false;
+                this.gridColor = Color.Black;
                 this.graphicsPanel1.Invalidate();
             }
         }
