@@ -501,7 +501,7 @@ namespace GOL_EM_14
             Random random = new Random();
             if (DialogResult.OK == random.ShowDialog())
             {
-
+                this.seed
             }
         }
     }
