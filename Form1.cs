@@ -564,5 +564,36 @@ namespace GOL_EM_14
         {
             this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
         }
+
+        private void backgroundModalColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+
+            //data exchange (properties)
+
+            dlg.Color = graphicsPanel1.BackColor;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                graphicsPanel1.BackColor = dlg.Color;
+            }
+            graphicsPanel1.Invalidate();
+        }
+
+        private void cellColorModal_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+
+            //data exchange (properties)
+
+            dlg.Color = cellColor;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                cellColor = dlg.Color;
+            }
+            graphicsPanel1.Invalidate();
+        }
     }
+    
 }
