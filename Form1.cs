@@ -28,6 +28,7 @@ namespace GOL_EM_14
         //bool to check cells current state
         //default to false? 
         private bool checkedState = false;
+        private int seed = 0;
 
 
         // Drawing colors
@@ -495,13 +496,13 @@ namespace GOL_EM_14
 
 
         }
-
+       
         private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Random random = new Random();
             if (DialogResult.OK == random.ShowDialog())
             {
-                this.seed
+                this.seed = (int) random.
             }
         }
     }

@@ -8,6 +8,10 @@ namespace GOL_EM_14
 {
     class Random :Form1
     {
-
+        private UpDownNumeric upDownNumeric1;
+        public Decimal RandomSeedGen
+        {
+            get => (Decimal) (int) this.numericUpDown1.Value
+        }
     }
 }
