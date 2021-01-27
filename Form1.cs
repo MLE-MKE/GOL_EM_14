@@ -31,6 +31,9 @@ namespace GOL_EM_14
         private int seed = 0;
         private int livingcells = 0;
 
+        //variable settings
+        
+
 
         // Drawing colors
         Color gridColor = Color.Black;
@@ -50,7 +53,9 @@ namespace GOL_EM_14
             timer.Interval = 1000; // milliseconds
             timer.Tick += Timer_Tick;
             timer.Enabled = false; // start timer running
-        }
+
+             this.turnGridOnoffToolStripMenuItem = new ToolStripMenuItem();
+    }
 
         // Calculate the next generation of cells
         private int CountNeighborsFinite(int x, int y)
@@ -537,6 +542,18 @@ namespace GOL_EM_14
                 this.gridColor = Color.Black;
                 this.graphicsPanel1.Invalidate();
             }
+        }
+
+        private void gridColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.Color = this.gridColor;
+            if (DialogResult.OK != colorDialog.ShowDialog())
+                return;
+            this.gridColor = colorDialog.Color;
+            this.graphicsPanel1.Invalidate();
+
+            
         }
     }
 }
