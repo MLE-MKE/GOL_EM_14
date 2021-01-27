@@ -407,30 +407,28 @@ namespace GOL_EM_14
             this.label1.Text = "Generations = " + this.generations.ToString();
             this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
             this.UniverseSize.Text = "UniverseSize: (Width = , Height = ) ";
-            Settings.Default.PanelColor = this.graphicsPanel1.BackColor;
-            Settings.Default.CellColor = this.cellColor;
-            Settings.Default.Save();
+         
             #region Original Code
 
-            // If the left mouse button was clicked
-            if (e.Button == MouseButtons.Left)
-            {
-                // Calculate the width and height of each cell in pixels
-                int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
-                int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
+            //// If the left mouse button was clicked
+            //if (e.Button == MouseButtons.Left)
+            //{
+            //    // Calculate the width and height of each cell in pixels
+            //    int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
+            //    int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
 
-                // Calculate the cell that was clicked in
-                // CELL X = MOUSE X / CELL WIDTH
-                int x = e.X / cellWidth;
-                // CELL Y = MOUSE Y / CELL HEIGHT
-                int y = e.Y / cellHeight;
+            //    // Calculate the cell that was clicked in
+            //    // CELL X = MOUSE X / CELL WIDTH
+            //    int x = e.X / cellWidth;
+            //    // CELL Y = MOUSE Y / CELL HEIGHT
+            //    int y = e.Y / cellHeight;
 
-                // Toggle the cell's state
-                universe[x, y] = !universe[x, y];
+            //    // Toggle the cell's state
+            //    universe[x, y] = !universe[x, y];
 
-                // Tell Windows you need to repaint
-                graphicsPanel1.Invalidate();
-            }
+            //    // Tell Windows you need to repaint
+            //    graphicsPanel1.Invalidate();
+            //}
             #endregion
         }
 
