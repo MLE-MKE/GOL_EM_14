@@ -14,8 +14,8 @@ namespace GOL_EM_14
     public partial class Form1 : Form
     {
         // The universe array
-        bool[,] universe = new bool[5, 5];
-        bool[,] scratchPad = new bool[5, 5];
+        bool[,] universe = new bool[100, 100];
+        bool[,] scratchPad = new bool[100, 100];
 
 
         //Declaring variables for Next Generation
