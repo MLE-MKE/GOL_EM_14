@@ -186,34 +186,45 @@ namespace GOL_EM_14
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
                     //this.checkAlive = !this.checkedstate ? this.CountNeighborsFinite(x, y) : this.GetTorodial(x, y);
-                    int neighborcount = CountNeighborsFinite(x, y);
-
-                    if (universe[x, y])
-                    {
-
-
-                        //dead cells
-                        if (neighborcount > 2)
-                        {
-                            scratchPad[x, y] = false;
-                        }
-
-                        if (neighborcount < 3)
-                        {
-                            scratchPad[x, y] = false;
-                        }
-
-                        //living cells
-
-                        if (neighborcount == 3 || neighborcount == 2)
-                        {
-                            scratchPad[x, y] = true;
-                        }
+                    //int neighborcount = CountNeighborsFinite(x, y);
+                    #region old logic 
+                    //if (universe[x, y])
+                    //{
 
 
+                    //    ////dead cells
+                    //    //if (neighborcount > 2)
+                    //    //{
+                    //    //    scratchPad[x, y] = false;
+                    //    //}
 
-                        universe[x, y] = !universe[x, y];
-                    }
+                    //    //if (neighborcount < 3)
+                    //    //{
+                    //    //    scratchPad[x, y] = false;
+                    //    //}
+
+                    //    ////living cells
+
+                    //    //if (neighborcount == 3 || neighborcount == 2)
+                    //    //{
+                    //    //    scratchPad[x, y] = true;
+                    //    //}
+
+
+
+                    //    //universe[x, y] = !universe[x, y];
+                    //}
+                    #endregion
+
+                    this.checkAlive = !this.checkedState ? this.countNeighbor(x,y) : this.GetToroidal(x, y);
+                    if (this.checkAlive < 2 || this.checkAlive > 3)
+                        checkArray1[x, y] = false;
+                    if ((this.checkAlive == 2 || this.checkAlive == 3) && this.universe[x, y])
+                        checkArray1[x, y] = true;
+                    if (this.checkAlive == 3 && !this.universe[x, y])
+                        checkArray1[x, y] = true;
+                    if (checkArray1[x, y])
+                        ++this.livingcells;
                 }
 
                 universe = scratchPad;
@@ -308,6 +319,48 @@ namespace GOL_EM_14
             }
         }
 
+
+        private int countNeighbor(int x, int y)
+        {
+            int num = 0;
+            for (int index1 = x - 1; index1 <= x + 1; ++index1)
+            {
+                for (int index2 = y - 1; index2 <= y + 1; ++index2)
+                {
+                    bool flag1 = index1 < this.universe.GetLength(0) - 1 && index1 >= 0;
+                    bool flag2 = index2 < this.universe.GetLength(1) - 1 && index2 >= 0;
+                    if (index1 < this.universe.GetLength(0) && index1 >= 0 && (index2 < this.universe.GetLength(1) && index2 >= 0) && (this.universe[index1, index2] && (index1 != x || index2 != y)))
+                        ++num;
+                }
+            }
+            return num;
+        }
+        private int GetToroidal(int x, int y)
+        {
+            int num = 0;
+            for (int index1 = -1; index1 <= 1; ++index1)
+            {
+                for (int index2 = -1; index2 <= 1; ++index2)
+                {
+                    int index3 = x + index2;
+                    int index4 = y + index1;
+                    if (index2 != 0 || index1 != 0)
+                    {
+                        if (index3 < 0)
+                            index3 = this.universe.GetLength(0) - 1;
+                        if (index4 < 0)
+                            index4 = this.universe.GetLength(1) - 1;
+                        if (index3 == this.universe.GetLength(0))
+                            index3 = 0;
+                        if (index4 == this.universe.GetLength(1))
+                            index4 = 0;
+                        if (this.universe[index3, index4])
+                            ++num;
+                    }
+                }
+            }
+            return num;
+        }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Iterate through the universe in the y, top to bottom
@@ -662,19 +715,7 @@ namespace GOL_EM_14
 
         private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (this.torodialToolStripMenuItem.Checked)
-            {
-                this.BoundaryType.Text = "BoundaryType = Torodial";
-                this.torodialToolStripMenuItem.Enabled = true;
-                this.finiteToolStripMenuItem.Enabled = false;
-            }
-            if (!this.checkedState)
-            {
-                this.checkedState = true;
-                this.torodialToolStripMenuItem.Checked = false;
-                this.finiteToolStripMenuItem.Checked = true;
-            }
-            this.graphicsPanel1.Invalidate();
+
         }
     }
     
