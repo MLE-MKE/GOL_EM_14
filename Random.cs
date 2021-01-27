@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace GOL_EM_14
 {
-    class Random :Form1
+    class Random : Form1
     {
-        private UpDownNumeric upDownNumeric1;
-        public Decimal RandomSeedGen
+        //private UpDownNumeric upDownNumeric1;
+        //public Decimal RandomSeedGen
+        //{
+        //    get => (Decimal) (int) this.numericUpDown1.Value
+        //}
+        internal int Next(int v1, int v2)
         {
-            get => (Decimal) (int) this.numericUpDown1.Value
+            throw new NotImplementedException();
         }
     }
 }

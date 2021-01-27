@@ -29,6 +29,7 @@ namespace GOL_EM_14
         //default to false? 
         private bool checkedState = false;
         private int seed = 0;
+        private int livingcells = 0;
 
 
         // Drawing colors
@@ -502,7 +503,18 @@ namespace GOL_EM_14
             Random random = new Random();
             if (DialogResult.OK == random.ShowDialog())
             {
-                this.seed = (int) random.
+                for (int index = 0; index < this.universe.GetLength(0); index++)
+                {
+                    for (int index2 = 0; index2 < this.universe.GetLength(1); index2++)
+                    {
+                        this.universe[index, index2] = false;
+                        if (random.Next(0, 4) == 0)
+                        {
+                            this.universe[index, index2] = true;
+                            ++this.livingcells;
+                        }
+                    }
+                }
             }
         }
     }
