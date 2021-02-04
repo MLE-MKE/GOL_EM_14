@@ -34,6 +34,7 @@ namespace GOL_EM_14
         private Label BoundarySize;
         private Label BoundaryType;
         private Label UniverseSize;
+        private Label Label;
 
         private ToolStripStatusLabel CellsAlive;
         private Label label1;
@@ -380,8 +381,8 @@ namespace GOL_EM_14
                 ++this.livingcells;
             else
                 --this.livingcells;
-            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
-            this.CellsAlive.Text = "Living Cells = " + this.livingcells.ToString();
+            //this.cellcount.text = "cell count = " + this.livingcells.tostring();
+            //this.cellsalive.text = "living cells = " + this.livingcells.tostring();
         }
 
         private void cutToolStripButton_Click(object sender, EventArgs e) => this.timer.Stop();
@@ -826,6 +827,7 @@ namespace GOL_EM_14
             this.graphicsPanel1.Invalidate();
         }
 
+        //okay I dont need this.
         private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
@@ -848,6 +850,16 @@ namespace GOL_EM_14
             }
             generations = 0;
             
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
     
