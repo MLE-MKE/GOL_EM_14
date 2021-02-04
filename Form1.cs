@@ -66,6 +66,7 @@ namespace GOL_EM_14
 
             this.boundariesToolStripMenuItem = new ToolStripMenuItem();
         }
+        //Count 
 
         // Calculate the next generation of cells
         private int CountNeighborsFinite(int x, int y)
