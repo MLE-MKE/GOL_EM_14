@@ -235,7 +235,16 @@ namespace GOL_EM_14
         {
             int side1 = universe.GetLength(0);
             int side2 = universe.GetLength(1);
-                
+            aliveCells = 0;
+            for (int x = 0; x < side1; x++)
+            {
+                for (int y = 0; y < side2; y++)
+                {
+                    //going to need a switch to change between 
+                    //finite and torodial 
+
+                }
+            }
 
                 
             
@@ -714,7 +723,7 @@ namespace GOL_EM_14
                         if (random.Next(0, 4) == 0)
                         {
                             this.universe[index, index2] = true;
-                            ++this.livingcells;
+                            ++this.aliveCells;
                         }
                     }
                 }
