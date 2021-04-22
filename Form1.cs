@@ -132,15 +132,28 @@ namespace GOL_EM_14
         public int CountNeighbor(int x, int y)
         {
             int num = 0;
+            //using same logic as next gen
+
+            //x Get Length (0)
+            //y Get Length (1)
             bool[,] cnArray = new bool[universe.GetLength(0), universe.GetLength(1)];
             if (x - 1 >= 0 && y - 1 >= 0 && universe[x-1, y-1])
                 ++num;
-            if (true)
-            {
-
-            }
-
-            
+            if (x - 1 >= 0 && universe[x - 1, y])
+                ++num;
+            if (x - 1 >= 0 && y + 1 < universe.GetLength(1) && universe[x - 1, y + 1])
+                ++num;
+            if (x + 1 < universe.GetLength(0) && y - 1 >= 0 && universe[x + 1, y - 1])
+                ++num;
+            if (x + 1 < universe.GetLength(0) && universe[x + 1, y])
+                ++num;
+            if (x + 1 < universe.GetLength(0) && y + 1 < universe.GetLength(1) && universe[x + 1, y + 1])
+                ++num;
+            if (y + 1 < universe.GetLength(1) && universe[x, y + 1])
+                ++num;
+            if (y - 1 < universe.GetLength(1) && universe[x, y - 1])
+                ++num;
+            return num;
 
         }
         private int CountNeighborsFinite(int x, int y)
