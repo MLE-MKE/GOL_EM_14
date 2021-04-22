@@ -83,6 +83,8 @@ namespace GOL_EM_14
         public Form1()
         {
             InitializeComponent();
+            NextGeneration();
+            
 
             // Setup the timer
             timer.Interval = 1000; // milliseconds
@@ -98,7 +100,7 @@ namespace GOL_EM_14
         {
             //create a bool?
             //or should I use the scratch pad?
-            bool[,] nextGenArray = new bool[universe.GetLength(0), universe.GetLength(1)];
+            
 
             aliveCells = 0;
             for (int x = 0; x < universe.GetLength(0); x++)
@@ -109,14 +111,15 @@ namespace GOL_EM_14
                 {
                     this.checkAlive = !checkedState ? countNeighbor(x, y) : GetToroidal(x, y);
                     if (checkAlive < 2 || checkAlive > 3)
-                        nextGenArray[x, y] = false;
+                        universe[x, y] = false;
                     if (checkAlive == 2 || checkAlive == 3)
-                        nextGenArray[x, y] = true;
+                        universe[x, y] = true;
                     if (checkAlive == 3 && !universe[x, y])
-                        nextGenArray[x, y] = true;
-                    if (nextGenArray[x, y])
+                        universe[x, y] = true;
+                    if (universe[x, y])
                         ++aliveCells;
 
+                    universe = scratchPad;
 
                 }
             }
@@ -136,7 +139,7 @@ namespace GOL_EM_14
 
             //x Get Length (0)
             //y Get Length (1)
-            bool[,] cnArray = new bool[universe.GetLength(0), universe.GetLength(1)];
+           
             if (x - 1 >= 0 && y - 1 >= 0 && universe[x-1, y-1])
                 ++num;
             if (x - 1 >= 0 && universe[x - 1, y])
