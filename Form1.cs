@@ -53,6 +53,7 @@ namespace GOL_EM_14
         // Generation count
         int generations = 0;
 
+       
         public Form1()
         {
             InitializeComponent();
@@ -67,7 +68,13 @@ namespace GOL_EM_14
             this.boundariesToolStripMenuItem = new ToolStripMenuItem();
         }
         //Count 
-        ch
+        //Get neighbor count 
+        public int GetNeighborCount(int x,int y)
+        {
+            int num = 0;
+
+        }
+
         // Calculate the next generation of cells
         private int CountNeighborsFinite(int x, int y)
         {
@@ -617,6 +624,13 @@ namespace GOL_EM_14
             }
             //DO I need the close? or will the invalidate?? 
             streamReader.Close();
+
+            //??
+            //??Would it not be universe?? the invalidate that is?
+            //??
+
+
+            this.uninverse.Invalidate();
             #region openFileDialog Test
             //if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             //{
@@ -647,10 +661,22 @@ namespace GOL_EM_14
                     string empty = string.Empty;
                     for (int index2 = 0; index2 < this.universe.GetLength(0); index2++)
                     {
-                        if (this.universe[index2, index])
-                            streamWriter.Write("0");
-                        else if (!this.universe[index2, index])
-                            streamWriter.Write(".");
+                        StringBuilder stringBuilder = new StringBuilder();
+
+                        //universe size?
+                        for (int x = 0; x <universe.Length.Width; x++)
+                        {
+                            stringBuilder.Append(universe[x, y].Alive ? '0' : '.');
+                            streamWriter.WriteLine(stringBuilder.ToString());
+
+                        }
+                        streamWriter.Close();
+                        //**trying a for loop instead of an if statement **
+
+                        //if (this.universe[index2, index])
+                        //    streamWriter.Write("0");
+                        //else if (!this.universe[index2, index])
+                        //    streamWriter.Write(".");
 
                     }
                     streamWriter.WriteLine(empty);
@@ -728,6 +754,8 @@ namespace GOL_EM_14
 
             
         }
+
+        //pee pee poo this is a commit test 
         private void backgroundModalColor_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -831,7 +859,9 @@ namespace GOL_EM_14
         //okay I dont need this.
         private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            //call the boundry stlye
+            BoundaryType.Finite;
+            universe.Boundary
         }
 
         private void fromTimeSeedToolStripMenuItem_Click(object sender, EventArgs e)
