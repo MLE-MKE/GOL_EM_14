@@ -45,7 +45,7 @@ namespace GOL_EM_14
 
 
         //Declaring variables for Next Generation
-        private Cell[,] universe;
+        
         private int aliveCells = 0;
         private int checkAlive;
 
@@ -96,11 +96,11 @@ namespace GOL_EM_14
         }
         //Count 
         //Get neighbor count 
-        public int GetNeighborCount(int x, int y)
-        {
-            int num = 0;
+        //public int GetNeighborCount(int x, int y)
+        //{
+        //    int num = 0;
 
-        }
+        //}
 
         // Calculate the next generation of cells
         private int CountNeighborsFinite(int x, int y)
@@ -219,7 +219,7 @@ namespace GOL_EM_14
         //create somthing to account for the cells being alive or dead
         public Cell this[int x, int y]
             {
-            get => universe[x, y];
+            get => this.universe[x, y];
             set
             {
                 if (value.Alive & this.universe[x, y])
@@ -381,9 +381,9 @@ namespace GOL_EM_14
             this.universe[(int)num3, (int)num4] = !this.universe[(int)num3, (int)num4];
             this.graphicsPanel1.Invalidate();
             if (this.universe[(int)num3, (int)num4])
-                ++this.livingcells;
+                ++this.aliveCells;
             else
-                --this.livingcells;
+                --this.aliveCells;
             //this.cellcount.text = "cell count = " + this.livingcells.tostring();
             //this.cellsalive.text = "living cells = " + this.livingcells.tostring();
         }
@@ -402,14 +402,14 @@ namespace GOL_EM_14
                     this.universe[index2, index1] = false;
             }
             this.generations = 0;
-            this.livingcells = 0;
+            this.aliveCells = 0;
             this.toolStripStatusLabelGenerations.Text = "Generations = " + this.generations.ToString();
-            this.CellsAlive.Text = "Living Cells = " + this.livingcells.ToString();
+            this.CellsAlive.Text = "Living Cells = " + this.aliveCells.ToString();
             this.graphicsPanel1.Invalidate();
             this.timer.Stop();
             this.gridColor = Color.Black;
             this.label1.Text = "Generations = " + this.generations.ToString();
-            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
+            this.CellCount.Text = "Cell Count = " + this.aliveCells.ToString();
             this.UniverseSize.Text = "UniverseSize: (Width = , Height = ) ";
          
             #region Original Code
