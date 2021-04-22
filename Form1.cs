@@ -13,6 +13,25 @@ namespace GOL_EM_14
 {
     public partial class Form1 : Form
     {
+
+        public struct Cell
+        {
+            private bool alive;
+
+            public Cell(bool alive) => this.alive = alive;
+
+            public bool Alive
+            {
+                get => this.alive;
+                set => this.alive = value;
+            }
+
+            public bool Dead
+            {
+                get => !this.alive;
+                set => this.alive = !value;
+            }
+        }
         // The universe array
         bool[,] universe = new bool[10, 10];
         //bool[,] scratchPad = new bool[10, 10];
