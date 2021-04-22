@@ -218,8 +218,8 @@ namespace GOL_EM_14
         }
         //create somthing to account for the cells being alive or dead
         public Cell this[int x, int y]
-            {
-            get => this.universe[x, y];
+        {
+            //can I just set somthign without getting it?
             set
             {
                 if (value.Alive & this.universe[x, y])
@@ -228,7 +228,9 @@ namespace GOL_EM_14
                     --this.aliveCells;
                 this.universe[x, y] = value;
             }
-            }
+        }   
+            
+            
         private void NextGeneration()
         {
             int side1 = universe.GetLength(0);
