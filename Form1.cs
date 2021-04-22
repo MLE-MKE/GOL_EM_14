@@ -13,6 +13,27 @@ namespace GOL_EM_14
 {
     public partial class Form1 : Form
     {
+      
+
+        // The universe array
+        bool[,] universe = new bool[100, 100];
+        bool[,] scratchPad = new bool[100, 100];
+
+
+
+        //Declaring variables for Next Generation
+        
+        private int aliveCells = 0;
+        private int checkAlive;
+
+        // Declaring other variable I think I have to declare?
+        private ToolStripMenuItem randomizeUniverseSeedToolStripMenuItem;
+
+        //bool to check cells current state
+        //default to false? 
+        private bool checkedState = false;
+        private int seed = 0;
+
         //cell structre for bas of game 
         public struct Cell
         {
@@ -32,28 +53,9 @@ namespace GOL_EM_14
                 set => this.alive = !value;
             }
 
-          
+
         }
 
-        // The universe array
-        bool[,] universe = new bool[10, 10];
-        bool[,] scratchPad = new bool[10, 10];
-
-
-
-        //Declaring variables for Next Generation
-        
-        private int aliveCells = 0;
-        private int checkAlive;
-
-        // Declaring other variable I think I have to declare?
-        private ToolStripMenuItem randomizeUniverseSeedToolStripMenuItem;
-
-        //bool to check cells current state
-        //default to false? 
-        private bool checkedState = false;
-        private int seed = 0;
-       
         private Label CellCount;
         private Label BoundarySize;
         private Label BoundaryType;
@@ -91,18 +93,11 @@ namespace GOL_EM_14
 
             this.boundariesToolStripMenuItem = new ToolStripMenuItem();
         }
-        //Count 
-        //Get neighbor count 
-        //public int GetNeighborCount(int x, int y)
-        //{
-        //    int num = 0;
-
-        //}
-
-        // Calculate the next generation of cells
+     
         private void NextGeneration()
         {
             //create a bool?
+            //or should I use the scratch pad?
             bool[,] nextGenArray = new bool[universe.GetLength(0), universe.GetLength(1)];
 
             aliveCells = 0;
@@ -123,27 +118,8 @@ namespace GOL_EM_14
                         ++aliveCells;
 
 
-
-
-
-                    //going to need a switch to change between 
-                    //finite and torodial 
-                    scratchPad[x, y] = true;
-
-                    //int num = 0;
-                    //switch ()
-                    //{
-                    //    default:
-                    //        break;
-                    //}
-
-
                 }
             }
-
-
-
-            graphicsPanel1.Invalidate();
 
             // Increment generation count
             generations++;
@@ -152,6 +128,20 @@ namespace GOL_EM_14
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
 
             graphicsPanel1.Invalidate();
+        }
+        public int CountNeighbor(int x, int y)
+        {
+            int num = 0;
+            bool[,] cnArray = new bool[universe.GetLength(0), universe.GetLength(1)];
+            if (x - 1 >= 0 && y - 1 >= 0 && universe[x-1, y-1])
+                ++num;
+            if (true)
+            {
+
+            }
+
+            
+
         }
         private int CountNeighborsFinite(int x, int y)
         {
@@ -209,6 +199,8 @@ namespace GOL_EM_14
 
             return count;
 
+      
+
 
         }
 
@@ -265,6 +257,8 @@ namespace GOL_EM_14
             }
 
             return count;
+
+           
         }
         //create somthing to account for the cells being alive or dead
 

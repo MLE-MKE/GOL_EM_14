@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GOL_EM_14", "GOL_EM_14.csproj", "{0A5E5500-8ED3-401D-A82B-3A45304B0BED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAME OF LIFEEEE", "..\..\..\GAME OF LIFEEEE\GAME OF LIFEEEE.csproj", "{8C9E7B43-85B2-4191-B9DB-478905F974C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0A5E5500-8ED3-401D-A82B-3A45304B0BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5E5500-8ED3-401D-A82B-3A45304B0BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5E5500-8ED3-401D-A82B-3A45304B0BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9E7B43-85B2-4191-B9DB-478905F974C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9E7B43-85B2-4191-B9DB-478905F974C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9E7B43-85B2-4191-B9DB-478905F974C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9E7B43-85B2-4191-B9DB-478905F974C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
