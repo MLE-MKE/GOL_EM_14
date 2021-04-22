@@ -62,7 +62,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Universe_Array.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

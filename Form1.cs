@@ -13,7 +13,7 @@ namespace GOL_EM_14
 {
     public partial class Form1 : Form
     {
-
+        //cell structre for bas of game 
         public struct Cell
         {
             private bool alive;
@@ -31,13 +31,21 @@ namespace GOL_EM_14
                 get => !this.alive;
                 set => this.alive = !value;
             }
+
+            public static implicit operator bool(Cell v)
+            {
+                throw new NotImplementedException();
+            }
         }
+
         // The universe array
-        bool[,] universe = new bool[10, 10];
-        //bool[,] scratchPad = new bool[10, 10];
+        bool[,] universe = new bool[100, 100];
+        bool[,] scratchPad = new bool[100, 100];
+
 
 
         //Declaring variables for Next Generation
+        private Cell[,] universe;
         private int aliveCells = 0;
         private int checkAlive;
 
@@ -48,7 +56,7 @@ namespace GOL_EM_14
         //default to false? 
         private bool checkedState = false;
         private int seed = 0;
-        private int livingcells = 0;
+       
         private Label CellCount;
         private Label BoundarySize;
         private Label BoundaryType;
@@ -72,7 +80,7 @@ namespace GOL_EM_14
         // Generation count
         int generations = 0;
 
-       
+
         public Form1()
         {
             InitializeComponent();
@@ -82,13 +90,13 @@ namespace GOL_EM_14
             timer.Tick += Timer_Tick;
             timer.Enabled = false; // start timer running
 
-             this.turnGridOnoffToolStripMenuItem = new ToolStripMenuItem();
+            this.turnGridOnoffToolStripMenuItem = new ToolStripMenuItem();
 
             this.boundariesToolStripMenuItem = new ToolStripMenuItem();
         }
         //Count 
         //Get neighbor count 
-        public int GetNeighborCount(int x,int y)
+        public int GetNeighborCount(int x, int y)
         {
             int num = 0;
 
@@ -151,7 +159,7 @@ namespace GOL_EM_14
 
             return count;
 
-            
+
         }
 
         private int CountNeighborsToroidal(int x, int y)
@@ -159,7 +167,7 @@ namespace GOL_EM_14
             int count = 0;
             int xLength = universe.GetLength(0);
             int yLength = universe.GetLength(1);
-            
+
 
             for (int yOffset = -1; yOffset <= 1; yOffset++)
             {
@@ -177,7 +185,7 @@ namespace GOL_EM_14
                     // if xCheck is less than 0 then set to xLen - 1
                     if (xCheck < 0)
                     {
-                        xCheck = universe.GetLength(0)-1;
+                        xCheck = universe.GetLength(0) - 1;
                     }
 
                     // if yCheck is less than 0 then set to yLen - 1
@@ -199,68 +207,36 @@ namespace GOL_EM_14
                     }
 
                     if (universe[xCheck, yCheck] == true)
-                     count++; 
-                   
+                        count++;
 
-                  
+
+
                 }
             }
 
             return count;
         }
+        //create somthing to account for the cells being alive or dead
+        public Cell this[int x, int y]
+            {
+            get => universe[x, y];
+            set
+            {
+                if (value.Alive & this.universe[x, y])
+                    ++aliveCells;
+                else if (value.Dead & this.universe[x, y])
+                    --this.aliveCells;
+                this.universe[x, y] = value;
+            }
+            }
         private void NextGeneration()
         {
-            bool[,] checkArray1 = new bool[this.universe.GetLength(0), this.universe.GetLength(1)];
-            this.aliveCells = 0;
+            int side1 = universe.GetLength(0);
+            int side2 = universe.GetLength(1);
+                
 
-            for (int y = 0; y < universe.GetLength(1); y++)
-            {
-                for (int x = 0; x < universe.GetLength(0); x++)
-                {
-                    //this.checkAlive = !this.checkedstate ? this.CountNeighborsFinite(x, y) : this.GetTorodial(x, y);
-                    //int neighborcount = CountNeighborsFinite(x, y);
-                    #region old logic 
-                    //if (universe[x, y])
-                    //{
-
-
-                    //    ////dead cells
-                    //    //if (neighborcount > 2)
-                    //    //{
-                    //    //    scratchPad[x, y] = false;
-                    //    //}
-
-                    //    //if (neighborcount < 3)
-                    //    //{
-                    //    //    scratchPad[x, y] = false;
-                    //    //}
-
-                    //    ////living cells
-
-                    //    //if (neighborcount == 3 || neighborcount == 2)
-                    //    //{
-                    //    //    scratchPad[x, y] = true;
-                    //    //}
-
-
-
-                    //    //universe[x, y] = !universe[x, y];
-                    //}
-                    #endregion
-
-                    this.checkAlive = !this.checkedState ? this.countNeighbor(x,y) : this.GetToroidal(x, y);
-                    if (this.checkAlive < 2 || this.checkAlive > 3)
-                        checkArray1[x, y] = false;
-                    if ((this.checkAlive == 2 || this.checkAlive == 3) && this.universe[x, y])
-                        checkArray1[x, y] = true;
-                    if (this.checkAlive == 3 && !this.universe[x, y])
-                        checkArray1[x, y] = true;
-                    if (checkArray1[x, y])
-                        ++this.livingcells;
-                }
-
-                ////universe = scratchPad;
-            }
+                
+            
 
 
             // Increment generation count
