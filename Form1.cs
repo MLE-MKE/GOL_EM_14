@@ -32,15 +32,12 @@ namespace GOL_EM_14
                 set => this.alive = !value;
             }
 
-            public static implicit operator bool(Cell v)
-            {
-                throw new NotImplementedException();
-            }
+          
         }
 
         // The universe array
-        bool[,] universe = new bool[100, 100];
-        bool[,] scratchPad = new bool[100, 100];
+        bool[,] universe = new bool[10, 10];
+        bool[,] scratchPad = new bool[10, 10];
 
 
 
@@ -79,7 +76,7 @@ namespace GOL_EM_14
 
         // Generation count
         int generations = 0;
-
+        private int y;
 
         public Form1()
         {
@@ -217,18 +214,24 @@ namespace GOL_EM_14
             return count;
         }
         //create somthing to account for the cells being alive or dead
-        public Cell this[int x, int y]
-        {
-            //can I just set somthign without getting it?
-            set
-            {
-                if (value.Alive & this.universe[x, y])
-                    ++aliveCells;
-                else if (value.Dead & this.universe[x, y])
-                    --this.aliveCells;
-                this.universe[x, y] = value;
-            }
-        }   
+
+
+        //** Do I even need to get or set**
+
+
+        //public Cell this[int x, int y]
+        //{
+        //    get => this.universe[x, y];
+        //    //can I just set somthign without getting it?
+        //    set
+        //    {
+        //        if (value.Alive & this.universe[x, y])
+        //            ++aliveCells;
+        //        else if (value.Dead & this.universe[x, y])
+        //            --this.aliveCells;
+        //        this.universe[x, y] = value;
+        //    }
+        //}   
             
             
         private void NextGeneration()
@@ -242,6 +245,15 @@ namespace GOL_EM_14
                 {
                     //going to need a switch to change between 
                     //finite and torodial 
+                    scratchPad[x, y] = true;
+
+                    //int num = 0;
+                    //switch ()
+                    //{
+                    //    default:
+                    //        break;
+                    //}
+
 
                 }
             }
@@ -636,7 +648,7 @@ namespace GOL_EM_14
             //??
 
 
-            this.uninverse.Invalidate();
+            graphicsPanel1.Invalidate();
             #region openFileDialog Test
             //if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             //{
@@ -670,10 +682,11 @@ namespace GOL_EM_14
                         StringBuilder stringBuilder = new StringBuilder();
 
                         //universe size?
-                        for (int x = 0; x <universe.Length.Width; x++)
+                        for (int x = 0; x <universe.Length; x++)
                         {
-                            stringBuilder.Append(universe[x, y].Alive ? '0' : '.');
+                            stringBuilder.Append(universe[x, y] ? '0' : '.');
                             streamWriter.WriteLine(stringBuilder.ToString());
+
 
                         }
                         streamWriter.Close();
@@ -710,25 +723,25 @@ namespace GOL_EM_14
        
        //maybe put in class just to make it neater?
 
-        private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Random random = new Random();
-            if (DialogResult.OK == random.ShowDialog())
-            {
-                for (int index = 0; index < this.universe.GetLength(0); index++)
-                {
-                    for (int index2 = 0; index2 < this.universe.GetLength(1); index2++)
-                    {
-                        this.universe[index, index2] = false;
-                        if (random.Next(0, 4) == 0)
-                        {
-                            this.universe[index, index2] = true;
-                            ++this.aliveCells;
-                        }
-                    }
-                }
-            }
-        }
+        //private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    Random random = new Random();
+        //    if (DialogResult.OK == random.())
+        //    {
+        //        for (int index = 0; index < this.universe.GetLength(0); index++)
+        //        {
+        //            for (int index2 = 0; index2 < this.universe.GetLength(1); index2++)
+        //            {
+        //                this.universe[index, index2] = false;
+        //                if (random.Next(0, 4) == 0)
+        //                {
+        //                    this.universe[index, index2] = true;
+        //                    ++this.aliveCells;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         private void turnGridOnoffToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -805,7 +818,7 @@ namespace GOL_EM_14
 
         private void torodialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
+            this.CellCount.Text = "Cell Count = " + this.aliveCells.ToString();
             if (this.finiteToolStripMenuItem.Checked)
             {
                 this.BoundaryType.Text = "BoundaryType = Finite";
@@ -844,7 +857,7 @@ namespace GOL_EM_14
         //torodial modal
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.CellCount.Text = "Cell Count = " + this.livingcells.ToString();
+            this.CellCount.Text = "Cell Count = " + this.aliveCells.ToString();
             if (this.finiteToolStripMenuItem.Checked)
             {
                 this.BoundaryType.Text = "BoundaryType = Finite";
@@ -863,12 +876,12 @@ namespace GOL_EM_14
         }
 
         //okay I dont need this.
-        private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //call the boundry stlye
-            BoundaryType.Finite;
-            universe.Boundary
-        }
+        //private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
+        //{
+        //    //call the boundry stlye
+        //    BoundaryType.Finite;
+        //    universe.Boundary
+        //}
 
         private void fromTimeSeedToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -881,7 +894,7 @@ namespace GOL_EM_14
                     if (random.Next(0,4) == 0)
                     {
                         universe[index, index2] = true;
-                        ++livingcells;
+                        ++aliveCells;
                     }
                 }
             }
