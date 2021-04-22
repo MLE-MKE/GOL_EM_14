@@ -236,13 +236,21 @@ namespace GOL_EM_14
             
         private void NextGeneration()
         {
-            int side1 = universe.GetLength(0);
-            int side2 = universe.GetLength(1);
+            //create a bool?
+            bool[,] nextGenArray = new bool[universe.GetLength(0), universe.GetLength(1)];
+            
             aliveCells = 0;
-            for (int x = 0; x < side1; x++)
+            for (int x = 0; x < universe.GetLength(0); x++)
             {
-                for (int y = 0; y < side2; y++)
+                for (int y = 0; y < universe.GetLength(1); y++)
+                    //? is an if : is an else 
+                    //ternary operator 
                 {
+                    this.checkAlive = !checkedState ? countNeighbor(x, y) : GetToroidal(x, y);
+                    if (checkedAlive < 2 || checkAlive > 3)
+                    
+
+                    
                     //going to need a switch to change between 
                     //finite and torodial 
                     scratchPad[x, y] = true;
