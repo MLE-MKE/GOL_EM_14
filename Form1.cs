@@ -109,9 +109,9 @@ namespace GOL_EM_14
             
 
             aliveCells = 0;
-            for (int x = 0; x < scratchPad.GetLength(0); x++)
+            for (int x = 0; x < universe.GetLength(0); x++)
             {
-                for (int y = 0; y < scratchPad.GetLength(1); y++)
+                for (int y = 0; y < universe.GetLength(1); y++)
                 //? is an if : is an else 
                 //ternary operator 
 
@@ -122,9 +122,9 @@ namespace GOL_EM_14
                         scratchPad[x, y] = false;
                     if (checkAlive == 2 || checkAlive == 3)
                         scratchPad[x, y] = true;
-                    if (checkAlive == 3 && !scratchPad[x, y])
+                    if (checkAlive == 3 && !universe[x, y])
                         scratchPad[x, y] = true;
-                    if (scratchPad[x, y])
+                    if (universe[x, y])
                         ++aliveCells;
 
                    scratchPad = universe;
