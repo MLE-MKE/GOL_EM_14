@@ -20,7 +20,7 @@ namespace GOL_EM_14
         bool[,] scratchPad = new bool[100, 100];
 
         //creating an enum for swtich statement for different boundary types 
-        public enum BoundaryType
+        public enum BoundaryType1
         {
             Finite,
             Torodial,
@@ -109,23 +109,26 @@ namespace GOL_EM_14
             
 
             aliveCells = 0;
-            for (int x = 0; x < universe.GetLength(0); x++)
+            for (int x = 0; x < scratchPad.GetLength(0); x++)
             {
-                for (int y = 0; y < universe.GetLength(1); y++)
+                for (int y = 0; y < scratchPad.GetLength(1); y++)
                 //? is an if : is an else 
                 //ternary operator 
+
+                    //after the for loops cop what is in the scratch pad to the universe
                 {
                     this.checkAlive = !checkedState ? countNeighbor(x, y) : GetToroidal(x, y);
                     if (checkAlive < 2 || checkAlive > 3)
-                        universe[x, y] = false;
+                        scratchPad[x, y] = false;
                     if (checkAlive == 2 || checkAlive == 3)
-                        universe[x, y] = true;
-                    if (checkAlive == 3 && !universe[x, y])
-                        universe[x, y] = true;
-                    if (universe[x, y])
+                        scratchPad[x, y] = true;
+                    if (checkAlive == 3 && !scratchPad[x, y])
+                        scratchPad[x, y] = true;
+                    if (scratchPad[x, y])
                         ++aliveCells;
 
-                    universe = scratchPad;
+                   scratchPad = universe;
+
 
                 }
             }
