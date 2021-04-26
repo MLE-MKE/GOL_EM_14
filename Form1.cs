@@ -16,10 +16,16 @@ namespace GOL_EM_14
       
 
         // The universe array
-        bool[,] universe = new bool[10, 10];
-        bool[,] scratchPad = new bool[10, 10];
+        bool[,] universe = new bool[100, 100];
+        bool[,] scratchPad = new bool[100, 100];
 
-
+        //creating an enum for swtich statement for different boundary types 
+        public enum BoundaryType
+        {
+            Finite,
+            Torodial,
+            Infinite
+        }
 
         //Declaring variables for Next Generation
         
