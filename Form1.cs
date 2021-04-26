@@ -956,24 +956,24 @@ namespace GOL_EM_14
 
         //need to set up logic for up down???
         //stack overflow up down 
-        private int state2;
-        private int state;
+        //private int state2;
+        //private int state;
 
-        internal void SetState2(int checkState, bool value) => state2 = value ? state2 | checkState : state2 & ~checkState;
-        public NumericUpDown()
-        {
-            this.SetState2(2048, true);
-            this.Text = "0";
+        //internal void SetState2(int checkState, bool value) => state2 = value ? state2 | checkState : state2 & ~checkState;
+        //public NumericUpDown()
+        //{
+        //    this.SetState2(2048, true);
+        //    this.Text = "0";
             
-        }
+        //}
 
 
         //make decimals for randomizing the universe width and height 
         //get and set 
 
 
-        public Decimal UniWidth
-        { get => NumericUpDown.}
+        //public Decimal UniWidth
+        //{ get => NumericUpDown.}
         private void universeSizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Random randomSeed = new Random();
