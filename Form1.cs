@@ -16,8 +16,8 @@ namespace GOL_EM_14
       
 
         // The universe array
-        bool[,] universe = new bool[100, 100];
-        bool[,] scratchPad = new bool[100, 100];
+        bool[,] universe = new bool[10, 10];
+        bool[,] scratchPad = new bool[10,10];
 
         //creating an enum for swtich statement for different boundary types 
         public enum BoundaryType1
@@ -323,22 +323,24 @@ namespace GOL_EM_14
             // Calculate the width and height of each cell in pixels
             // CELL WIDTH = WINDOW WIDTH / NUMBER OF CELLS IN X
             //convert to float
-
-            float num1 = (float)this.graphicsPanel1.ClientSize.Width / (float)this.universe.GetLength(0);
-            float num2 = (float)this.graphicsPanel1.ClientSize.Height / (float)this.universe.GetLength(1);
             int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
+            int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
+            ////float num1 = (float)this.graphicspanel1.clientsize.width / (float)this.universe.getlength(0);
+            ////float num2 = (float)this.graphicspanel1.clientsize.height / (float)this.universe.getlength(1);
+           
             //float cellWidthF;
-            float cellWidthF = (float)cellWidth;
+           
 
             // CELL HEIGHT = WINDOW HEIGHT / NUMBER OF CELLS IN Y
-            int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
+            
             //float cellHeightF;
-            float cellHeightF = (float)cellHeight;
+           
 
             // A Pen for drawing the grid lines (color, width)
+          
+            Pen gridPen = new Pen(gridColor, 1);
             Pen pen1 = new Pen(this.gridColor, 1f);
             Pen pen2 = new Pen(this.gridColor, 2f);
-            Pen gridPen = new Pen(gridColor, 1);
 
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
@@ -351,8 +353,8 @@ namespace GOL_EM_14
                 {
                     // A rectangle to represent each cell in pixels
                     RectangleF cellRect = (RectangleF)Rectangle.Empty;
-                    cellRect.X = (float)x * num1;
-                    cellRect.Y = (float)y * num2;
+                    cellRect.X = (float)x * cellWidth;
+                    cellRect.Y = (float)y * cellHeight;
                     cellRect.X = x * cellWidth;
                     cellRect.Y = y * cellHeight;
                     cellRect.Width = cellWidth;
@@ -447,8 +449,7 @@ namespace GOL_EM_14
                 ++this.aliveCells;
             else
                 --this.aliveCells;
-            //this.cellcount.text = "cell count = " + this.livingcells.tostring();
-            //this.cellsalive.text = "living cells = " + this.livingcells.tostring();
+           
         }
 
         private void cutToolStripButton_Click(object sender, EventArgs e) => this.timer.Stop();
@@ -514,6 +515,7 @@ namespace GOL_EM_14
                 }
             }
             return num;
+            
         }
         private int GetToroidal(int x, int y)
         {
@@ -949,6 +951,35 @@ namespace GOL_EM_14
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        //need to set up logic for up down???
+        //stack overflow up down 
+        private int state2;
+        private int state;
+
+        internal void SetState2(int checkState, bool value) => state2 = value ? state2 | checkState : state2 & ~checkState;
+        public NumericUpDown()
+        {
+            this.SetState2(2048, true);
+            this.Text = "0";
+            this.StopAcceleration();
+        }
+
+
+        //make decimals for randomizing the universe width and height 
+        //get and set 
+
+
+        public Decimal UniWidth
+        { get => NumericUpDown.}
+        private void universeSizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Random randomSeed = new Random();
+            int num1 = 50;
+            int num2 = 50;
+            randomSeed.UniWidth = (Decimal)num1;
 
         }
     }
