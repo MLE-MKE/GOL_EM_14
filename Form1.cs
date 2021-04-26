@@ -964,7 +964,7 @@ namespace GOL_EM_14
         {
             this.SetState2(2048, true);
             this.Text = "0";
-            this.StopAcceleration();
+            
         }
 
 
@@ -979,7 +979,7 @@ namespace GOL_EM_14
             Random randomSeed = new Random();
             int num1 = 50;
             int num2 = 50;
-            randomSeed.UniWidth = (Decimal)num1;
+            
 
         }
     }
