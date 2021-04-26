@@ -120,18 +120,20 @@ namespace GOL_EM_14
                     this.checkAlive = !checkedState ? countNeighbor(x, y) : GetToroidal(x, y);
                     if (checkAlive < 2 || checkAlive > 3)
                         scratchPad[x, y] = false;
-                    if (checkAlive == 2 || checkAlive == 3)
+                    if ((checkAlive == 2 || checkAlive == 3)&& universe[x, y])
                         scratchPad[x, y] = true;
                     if (checkAlive == 3 && !universe[x, y])
                         scratchPad[x, y] = true;
-                    if (universe[x, y])
+                    if (scratchPad[x, y])
                         ++aliveCells;
 
-                   scratchPad = universe;
-
+                  
 
                 }
             }
+            
+            universe = scratchPad;
+            graphicsPanel1.Invalidate();
 
             // Increment generation count
             generations++;
@@ -139,7 +141,7 @@ namespace GOL_EM_14
             // Update status strip generations
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
 
-            graphicsPanel1.Invalidate();
+            
         }
         public int CountNeighbor(int x, int y)
         {
