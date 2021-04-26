@@ -16,8 +16,8 @@ namespace GOL_EM_14
       
 
         // The universe array
-        bool[,] universe = new bool[10, 10];
-        bool[,] scratchPad = new bool[10, 10];
+        bool[,] universe = new bool[100, 100];
+        bool[,] scratchPad = new bool[100, 100];
 
         //creating an enum for swtich statement for different boundary types 
         public enum BoundaryType1
@@ -315,7 +315,7 @@ namespace GOL_EM_14
         private void Timer_Tick(object sender, EventArgs e)
         {
             NextGeneration();
-            graphicsPanel1.Invalidate();
+            
         }
 
         private void graphicsPanel1_Paint(object sender, PaintEventArgs e)
@@ -327,13 +327,13 @@ namespace GOL_EM_14
             float num1 = (float)this.graphicsPanel1.ClientSize.Width / (float)this.universe.GetLength(0);
             float num2 = (float)this.graphicsPanel1.ClientSize.Height / (float)this.universe.GetLength(1);
             int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
-            float cellWidthF;
-            cellWidthF = (float)cellWidth;
+            //float cellWidthF;
+            float cellWidthF = (float)cellWidth;
 
             // CELL HEIGHT = WINDOW HEIGHT / NUMBER OF CELLS IN Y
             int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
-            float cellHeightF;
-            cellHeightF = (float)cellHeight;
+            //float cellHeightF;
+            float cellHeightF = (float)cellHeight;
 
             // A Pen for drawing the grid lines (color, width)
             Pen pen1 = new Pen(this.gridColor, 1f);
