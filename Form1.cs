@@ -100,6 +100,7 @@ namespace GOL_EM_14
             this.turnGridOnoffToolStripMenuItem = new ToolStripMenuItem();
 
             this.boundariesToolStripMenuItem = new ToolStripMenuItem();
+            graphicsPanel1.Invalidate();
         }
      
         private void NextGeneration()
@@ -168,6 +169,7 @@ namespace GOL_EM_14
             if (y - 1 < universe.GetLength(1) && universe[x, y - 1])
                 ++num;
             return num;
+            graphicsPanel1.Invalidate();
 
         }
         private int CountNeighborsFinite(int x, int y)
@@ -225,8 +227,9 @@ namespace GOL_EM_14
             }
 
             return count;
+            graphicsPanel1.Invalidate();
 
-      
+
 
 
         }
@@ -284,8 +287,9 @@ namespace GOL_EM_14
             }
 
             return count;
+            graphicsPanel1.Invalidate();
 
-           
+
         }
         //create somthing to account for the cells being alive or dead
 
