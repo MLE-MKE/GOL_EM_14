@@ -498,7 +498,6 @@ namespace GOL_EM_14
             this.graphicsPanel1.Controls.Add(this.label4);
             this.graphicsPanel1.Controls.Add(this.label3);
             this.graphicsPanel1.Controls.Add(this.label2);
-            this.graphicsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.graphicsPanel1.Location = new System.Drawing.Point(0, 49);
             this.graphicsPanel1.Name = "graphicsPanel1";
             this.graphicsPanel1.Size = new System.Drawing.Size(573, 274);
