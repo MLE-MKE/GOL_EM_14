@@ -14,9 +14,36 @@ namespace GOL_EM_14
         private NumericUpDown numericUpDown1;
         //stack over flow random seed gen 
 
+        //random Array 
+        private int[] RandomArray = new int[56];
+
+
+
+        //if a negative number is specified, the absolute value of the number is used
        public Random(int Seed)
         {
-            int num = 161803398 - (Seed == int.MinValue ? int.MaxValue : Math.Abs(Seed));
+            int num1 = 161803398 - (Seed == int.MinValue ? int.MaxValue : Math.Abs(Seed));
+
+            //one from 56 55
+
+            RandomArray[55] = num1;
+            int num2 = 1;
+            for (int index1 = 1; index1 < 55; index1++)
+            {
+                int index2 = 21 * index1 % 55;
+                RandomArray[index2] = num2;
+                num2 = num1 - num2;
+                if (num2 < 0)
+                    num2 += int.MaxValue;
+                num1 = RandomArray[index2];
+            }
+            for (int index1 = 1; index1 < 5; index1++)
+            {
+                for (int index2 = 1; index2 < 56; index2++)
+                {
+                    RandomArray[index2]
+                }
+            }
         }
         public Decimal RandomSeed
         {
