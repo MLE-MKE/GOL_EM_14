@@ -62,13 +62,9 @@ namespace GOL_EM_14
             set => numericUpDown1.Value = value;
         }
 
-
         private void randomizeUniverseToolStripMenuItem_Click(object sender, EventArgs e) => RandomSeed = (Decimal)new Random().Next(int.MinValue, int.MaxValue);
-
-        private decimal Next(int minValue, int maxValue)
-        {
-            throw new NotImplementedException();
-        }
+        //Oh wait do I need to make a next?
+      
 
         private void InitializeComponent()
         {

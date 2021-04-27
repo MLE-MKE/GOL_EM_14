@@ -998,6 +998,16 @@ namespace GOL_EM_14
 
         }
 
+        private virtual int Next(int minValue, int maxValue)
+        {
+            if (minValue > maxValue)
+                long num = (long)maxValue - (long)minValue;
+            return num <= (long) int.MaxValue ? (int) ()
+                
+
+            
+        }
+
        
     }
     
