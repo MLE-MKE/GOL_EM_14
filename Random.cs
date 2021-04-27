@@ -55,7 +55,19 @@ namespace GOL_EM_14
         public Random()
         {
         }
+        private int Next(int minValue, int maxValue)
+        {
+            long num;
+            if (minValue > maxValue)
+                 num = (long)maxValue - (long)minValue;
+            return num <= (long)int.MaxValue ? (int)()
 
+
+
+
+        }
+
+        //can I dynamic envoke these orrrr
         public Decimal RandomSeed
         {
             get => (Decimal)(int)numericUpDown1.Value;
