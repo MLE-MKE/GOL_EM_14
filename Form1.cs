@@ -315,6 +315,7 @@ namespace GOL_EM_14
         private void Timer_Tick(object sender, EventArgs e)
         {
             NextGeneration();
+            graphicsPanel1.Invalidate();
             
         }
 
