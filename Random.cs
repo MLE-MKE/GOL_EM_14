@@ -16,7 +16,8 @@ namespace GOL_EM_14
 
         //random Array 
         private int[] RandomArray = new int[56];
-
+        private int next1;
+        private int next2;
 
 
         //if a negative number is specified, the absolute value of the number is used
@@ -41,19 +42,33 @@ namespace GOL_EM_14
             {
                 for (int index2 = 1; index2 < 56; index2++)
                 {
-                    RandomArray[index2]
+                    RandomArray[index2] -= RandomArray[1 + (index2 + 30) % 55];
+                    if (RandomArray[index2] < 0)
+                        RandomArray[index2] += int.MaxValue;
                 }
             }
+            next1 = 0;
+            next2 = 21;
+            Seed = 1;
         }
+
+        public Random()
+        {
+        }
+
         public Decimal RandomSeed
         {
             get => (Decimal)(int)numericUpDown1.Value;
             set => numericUpDown1.Value = value;
         }
 
-        private void randomizeUniverseToolStripMenuItem_Click(object sender, EventArgs e) => RandomSeed = (Decimal)new Random().Next(int MinValue, int MaxValue);
 
+        private void randomizeUniverseToolStripMenuItem_Click(object sender, EventArgs e) => RandomSeed = (Decimal)new Random().Next(int.MinValue, int.MaxValue);
 
+        private decimal Next(int minValue, int maxValue)
+        {
+            throw new NotImplementedException();
+        }
 
         private void InitializeComponent()
         {
