@@ -16,8 +16,8 @@ namespace GOL_EM_14
       
 
         // The universe array
-        bool[,] universe = new bool[100, 100];
-        bool[,] scratchPad = new bool[100,100];
+        bool[,] universe = new bool[50, 50];
+        bool[,] scratchPad = new bool[50,50];
 
         //creating an enum for swtich statement for different boundary types 
         public enum BoundaryType1
@@ -561,8 +561,10 @@ namespace GOL_EM_14
                 {
                     universe[x, y] = false;
                 }
-                graphicsPanel1.Invalidate();
+                
+               
             }
+            graphicsPanel1.Invalidate();
         }
 
 
