@@ -262,6 +262,7 @@ namespace GOL_EM_14
             this.randomizeUniverseToolStripMenuItem.Name = "randomizeUniverseToolStripMenuItem";
             this.randomizeUniverseToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.randomizeUniverseToolStripMenuItem.Text = "Randomize Universe ";
+            this.randomizeUniverseToolStripMenuItem.Click += new System.EventHandler(this.randomizeUniverseToolStripMenuItem_Click);
             // 
             // universeSeedToolStripMenuItem
             // 
@@ -281,14 +282,14 @@ namespace GOL_EM_14
             // turnGridOnoffToolStripMenuItem
             // 
             this.turnGridOnoffToolStripMenuItem.Name = "turnGridOnoffToolStripMenuItem";
-            this.turnGridOnoffToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.turnGridOnoffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.turnGridOnoffToolStripMenuItem.Text = "Turn Grid on/off";
             this.turnGridOnoffToolStripMenuItem.Click += new System.EventHandler(this.turnGridOnoffToolStripMenuItem_Click);
             // 
             // universeSizeToolStripMenuItem
             // 
             this.universeSizeToolStripMenuItem.Name = "universeSizeToolStripMenuItem";
-            this.universeSizeToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.universeSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.universeSizeToolStripMenuItem.Text = "Universe Size";
             this.universeSizeToolStripMenuItem.Click += new System.EventHandler(this.universeSizeToolStripMenuItem_Click);
             // 
