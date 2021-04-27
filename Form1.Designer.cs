@@ -564,6 +564,11 @@ namespace GOL_EM_14
 
         }
 
+        private void randomizeUniverseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void finiteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();

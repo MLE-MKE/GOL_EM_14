@@ -940,6 +940,7 @@ namespace GOL_EM_14
         //    universe.Boundary
         //}
 
+
         private void fromTimeSeedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Random random = new Random(DateTime.Now.Millisecond);
@@ -948,11 +949,12 @@ namespace GOL_EM_14
                 for (int index2 = 0; index2 < universe.GetLength(1); index2++)
                 {
                     universe[index, index2] = false;
-                    if (random.Next(0,4) == 0)
+                    if (random.Next1(0,4) == 0)
                     {
                         universe[index, index2] = true;
                         ++aliveCells;
                     }
+
                 }
             }
             generations = 0;

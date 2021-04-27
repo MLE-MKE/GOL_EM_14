@@ -57,11 +57,12 @@ namespace GOL_EM_14
         }
         private int Next(int minValue, int maxValue)
         {
-            long num;
+            long num = 0;
             if (minValue > maxValue)
-                 num = (long)maxValue - (long)minValue;
-            return num <= (long)int.MaxValue ? (int)()
+            { num = (long)maxValue - (long)minValue; }
+            return (int)num;
 
+            throw new NotImplementedException();
 
 
 
@@ -81,6 +82,11 @@ namespace GOL_EM_14
         private void InitializeComponent()
         {
 
+        }
+
+        internal int Next1(int v1, int v2)
+        {
+            throw new NotImplementedException();
         }
     }
 }
