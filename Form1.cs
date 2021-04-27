@@ -315,6 +315,9 @@ namespace GOL_EM_14
         private void Timer_Tick(object sender, EventArgs e)
         {
             NextGeneration();
+
+            //Do I need to invalidate here?
+
             graphicsPanel1.Invalidate();
             
         }
@@ -861,6 +864,10 @@ namespace GOL_EM_14
 
         private void torodialToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //if (DialogResult.OK != CountNeighborsFinite())
+            //    return; 
+
+            
             this.CellCount.Text = "Cell Count = " + this.aliveCells.ToString();
             if (this.finiteToolStripMenuItem.Checked)
             {
@@ -905,6 +912,7 @@ namespace GOL_EM_14
             {
                 this.BoundaryType.Text = "BoundaryType = Finite";
                 this.finiteToolStripMenuItem.Enabled = true;
+                
                 this.torodialToolStripMenuItem.Enabled = false;
             }
 
